@@ -1,0 +1,22 @@
+ .navbar-brand,
+ .nav-link,
+ .dropdown-toggle,
+ .dropdown-toggle:active,
+ .dropdown-toggle:hover {
+     color: white !important;
+
+ }
+
+
+
+ @media screen and (max-width: 992px) {
+
+     .navbar-brand,
+     .nav-link,
+     .dropdown-toggle:active,
+     .dropdown-toggle:hover {
+         color: black !important;
+     }
+
+
+ }
