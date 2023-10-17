@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './Header.css'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -10,28 +10,12 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link as RouterLink } from 'react-router-dom'
 import { useMedia } from 'react-use'
 import { TelephoneIcon } from '../../icons';
-import ProductItem from '../ProductItem/ProductItem';
-
-
 
 
 const Header = () => {
     const isSmallScreen = useMedia('(max-width:992px');
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [apiData, setApiData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
 
-    async function fetchData() {
-        setIsLoading(true);
-        const res = await fetch('https://fakestoreapi.com/products')
-        const data = await res.json();
-        setApiData(data)
-        setIsLoading(false);
-    }
-
-    useEffect(() => {
-        fetchData();
-    }, []);
 
     const handleSideBarToogle = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -91,18 +75,9 @@ const Header = () => {
                 </Container>
             </Navbar>
 
-            <TelephoneIcon className="text-primary" sx={{ height: "64px", width: "64px" }} />
+            {/* <TelephoneIcon className="text-primary" sx={{ height: "64px", width: "64px" }} /> */}
 
-            <div className='px-4'>
-                {isLoading ? (
-                    <ProductItem isLoading={true} />
-                ) : (
 
-                    apiData?.map((item, index) => (
-                        <ProductItem imageType={index % 2 === 0 ? "square" : "rounded"} item={item} key={item.id} />
-                    ))
-                )}
-            </div>
 
         </>
     );
